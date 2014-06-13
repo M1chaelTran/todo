@@ -9,11 +9,14 @@ import 'lib/item.dart';
 part 'todo.dart';
 part 'items_backend.dart';
 
-void main() {
-  var module = new Module()
-      ..type(Todo)
-      ..type(ItemsBackend);
+class TodoModule extends Module {
+  TodoModule() {
+    bind(Todo);
+    bind(ItemsBackend);
+  }
+}
 
-  applicationFactory().addModule(module).run();
+void main() {
+  applicationFactory().addModule(new TodoModule()).run();
 }
 

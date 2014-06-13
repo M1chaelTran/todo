@@ -1,10 +1,8 @@
-application: Vane-Angular-Mongo-Todo
-version: 1
-deploy: true
-pub: true
-dart2js: true 
+name: Vane-Angular-Mongo-Todo
+framework: vane
 
 handlers:
+# Backend services using the shorthand syntax
 - url: /todos 
   handler: GET:todo.dart:Todo.getAll 
 
@@ -16,13 +14,8 @@ handlers:
 
 - url: /todos 
   handler: DELETE:todo.dart:Todo.delete 
-  
-# Static content, will be served by your app's Nginx instance 
-- url: /
-  match: postregex
-  static_dir: web
 
-# Equivalent longer config for the Dart handlers above  
+# Equivalent alternatives to the above config  
 #- url: /todos 
 #  method: GET 
 #  script: todo.dart
@@ -42,5 +35,10 @@ handlers:
 #  method: DELETE 
 #  script: todo.dart
 #  handler: Todo.delete 
+  
+# Static content served by Nginx 
+- url: /
+  match: postregex
+  static_dir: web
 
-
+  
